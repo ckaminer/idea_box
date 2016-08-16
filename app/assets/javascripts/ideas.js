@@ -1,10 +1,13 @@
 $( document ).ready(function() {
 
   function prependIdea(idea){
-      $("#table-body").prepend("<tr>" +
-      "<td>" + idea.title + "</td>"  +
-      "<td>" + idea.body + "</td>" +
-      "<td>" + idea.quality + "</td>" + "</tr>");
+    var id = idea.id;
+      $("#table-body").prepend("<tr id='" + id + "'" + ">" +
+        "<td>" + idea.title + "</td>"  +
+        "<td>" + idea.body + "</td>" +
+        "<td>" + idea.quality + "</td>" +
+        "<td><button id='delete-button'>Delete</button></td>" +
+      "</tr>" );
       $("#idea-title").val("");
       $("#idea-body").val("");
   }
@@ -33,6 +36,19 @@ $( document ).ready(function() {
       dataType: "JSON",
       data: { idea: {title: ideaTitle, body: ideaBody} },
       success: prependIdea
+    });
+  });
+
+  $("#table-body").on('click', '#delete-button', function(){
+    var tableRow = this.closest('tr');
+    $.ajax({
+      method: "DELETE",
+      url: "/ideas/" + tableRow.id,
+      dataType: "JSON",
+      data: { id: tableRow.id},
+      success: function(){
+        tableRow.remove();
+      }
     });
   });
 

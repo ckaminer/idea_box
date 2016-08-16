@@ -4,7 +4,6 @@ RSpec.describe IdeasController do
   fixtures :ideas
   describe "GET index" do
     it "can get all ideas in descending chronological order" do
-      first = ideas(:two)
       get :index
 
       expect(response.status).to eq 200
@@ -28,6 +27,15 @@ RSpec.describe IdeasController do
       parsed_idea = JSON.parse(response.body)
       expect(parsed_idea["title"]).to eq "title test"
       expect(parsed_idea["body"]).to eq "body test"
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "can delete an idea" do
+      idea = ideas(:one)
+      delete :destroy, id: idea.id
+
+      expect(response.status).to eq 204
     end
   end
 end
