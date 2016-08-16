@@ -13,6 +13,12 @@ class IdeasController < ApplicationController
     idea.destroy
   end
 
+  def update
+    idea = Idea.find(params[:id])
+    render json: idea
+    # byebug
+  end
+
   private
     def idea_params
       params.require(:idea).permit(:id, :title, :body, :quality)

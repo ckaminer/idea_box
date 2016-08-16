@@ -38,4 +38,16 @@ RSpec.describe IdeasController do
       expect(response.status).to eq 204
     end
   end
+
+  describe "PATCH update" do
+    it "can increase the quality of an idea" do
+      idea = ideas(:one)
+      patch :update, id: idea.id, direction: "+"
+
+      expect(response.status).to eq 200
+
+      updated_idea = JSON.parse(response.body)
+      expect(updated_idea["quality"]).to eq "plausible"
+    end
+  end
 end

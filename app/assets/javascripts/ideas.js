@@ -6,7 +6,9 @@ $( document ).ready(function() {
         "<td>" + idea.title + "</td>"  +
         "<td>" + idea.body + "</td>" +
         "<td>" + idea.quality + "</td>" +
-        "<td><button id='delete-button'>Delete</button></td>" +
+        "<td><button class='btn btn-default' id='delete-button'>Delete</button></td>" +
+        "<td><button class='btn btn-default' id='upvote-button'>Cash</button></td>" +
+        "<td><button class='btn btn-default' id='downvote-button'>Beat</button></td>" +
       "</tr>" );
       $("#idea-title").val("");
       $("#idea-body").val("");
