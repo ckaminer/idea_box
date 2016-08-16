@@ -16,4 +16,18 @@ RSpec.describe IdeasController do
       expect(parsed_ideas.pluck("title")).to include "Title Two"
     end
   end
+
+  describe "POST create" do
+    it "can create a new idea" do
+      title = "title test"
+      body = "body test"
+      post :create, idea: {title: title, body: body}
+
+      expect(response.status).to eq 200
+
+      parsed_idea = JSON.parse(response.body)
+      expect(parsed_idea["title"]).to eq "title test"
+      expect(parsed_idea["body"]).to eq "body test"
+    end
+  end
 end
