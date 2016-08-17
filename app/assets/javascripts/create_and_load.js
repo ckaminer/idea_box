@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
   function prependIdea(idea){
     var id = idea.id;
-      $("#table-body").prepend("<tr id='" + id + "'" + ">" +
+      $("#table-body").prepend("<tr class='idea' id='" + id + "'" + ">" +
         "<td class='idea-title' contenteditable='true'>" + idea.title + "</td>"  +
         "<td class='idea-body' contenteditable='true'>" + idea.body + "</td>" +
         "<td id='quality'>" + idea.quality + "</td>" +
