@@ -42,7 +42,7 @@ RSpec.describe IdeasController do
   describe "PATCH update" do
     it "can increase the quality of an idea" do
       idea = ideas(:one)
-      patch :update, id: idea.id, direction: "+"
+      patch :update, id: idea.id, idea: {id: idea.id, quality: "plausible" }
 
       expect(response.status).to eq 200
 
