@@ -15,8 +15,8 @@ class IdeasController < ApplicationController
 
   def update
     idea = Idea.find(params[:id])
+    idea.update(idea_params)
     render json: idea
-    # byebug
   end
 
   private
