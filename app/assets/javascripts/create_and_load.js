@@ -32,13 +32,21 @@ $( document ).ready(function() {
   $("#create-idea").on('click', function(){
     var ideaTitle = $("#new-idea-title").val();
     var ideaBody = $("#new-idea-body").val();
-    $.ajax({
-      method: "POST",
-      url: "/ideas",
-      dataType: "JSON",
-      data: { idea: {title: ideaTitle, body: ideaBody} },
-      success: prependIdea
-    });
+    if (ideaTitle === ""){
+      alert('Please Add A Title');
+    }
+    else if (ideaBody === ""){
+      alert('Please Add A Body');
+    }
+    else {
+      $.ajax({
+        method: "POST",
+        url: "/ideas",
+        dataType: "JSON",
+        data: { idea: {title: ideaTitle, body: ideaBody} },
+        success: prependIdea,
+      });
+    }
   });
 
 });
