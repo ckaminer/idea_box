@@ -1,10 +1,15 @@
 //= require quality_sort
 
 describe('Index Lookup', function(){
-  it('returns 0 for swill', function(){
-    var quality = 'swill';
+  it('returns index for quality string', function(){
+    assert.equal(indexLookup('swill'), 0);
+    assert.equal(indexLookup('plausible'), 1);
+    assert.equal(indexLookup('genius'), 2);
+  });
+});
 
-    assert.equal(indexLookup(quality), 0);
-    // expect(indexLookup(quality)).to.equal(0);
+describe('Toggle Descending', function(){
+  it('toggles false to true and returns order', function(){
+    assert.equal(toggleDescending(), "descending");
   });
 });

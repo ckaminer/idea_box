@@ -1,10 +1,22 @@
-$( document ).ready(function() {
-  var qualityArray = ["swill", "plausible", "genius"];
-  var descendingIdeas = false;
+var qualityArray = ["swill", "plausible", "genius"];
+var descendingIdeas = false;
 
-  function indexLookup(quality){
-    return qualityArray.indexOf(quality);
+function indexLookup(quality){
+  return qualityArray.indexOf(quality);
+}
+
+function toggleDescending(){
+  if (descendingIdeas === false){
+    descendingIdeas = true;
+    return "descending";
   }
+  else {
+    descendingIdeas = false;
+    return "ascending";
+  }
+}
+
+$( document ).ready(function() {
 
   function descendingSort(direction){
     var $ideas = $('.idea');
@@ -20,16 +32,6 @@ $( document ).ready(function() {
     displayInOrder(sorted);
   }
 
-  function toggleDescending(){
-    if (descendingIdeas === false){
-      descendingIdeas = true;
-      return "descending";
-    }
-    else {
-      descendingIdeas = false;
-      return "ascending";
-    }
-  }
 
   function displayInOrder(sortedIdeas){
     sortedIds = sortedIdeas.map(function(index, idea){
