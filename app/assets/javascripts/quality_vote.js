@@ -8,7 +8,7 @@ $( document ).ready(function() {
       data: { id: id, idea: {quality: newQuality} },
       success: function(){
         var id = this.success.arguments[0].id;
-        $("#" + id + " #quality").text(newQuality);
+        $("#idea-" + id + " #quality").text(newQuality);
         this.closest('tr').querySelector("#quality").text(newQuality);
       }
     });
@@ -16,21 +16,23 @@ $( document ).ready(function() {
 
   $("#table-body").on('click', '#upvote-button', function(){
     var tableRow = this.closest('tr');
+    var ideaId = $(tableRow).data('id');
     var qualityString =  this.closest('tr').querySelector("#quality").textContent;
     var qualityIndex = qualityLookup.indexOf(qualityString);
     if (qualityIndex !== qualityLookup.length - 1) {
       var newQuality = qualityLookup[qualityIndex + 1];
-      updateQuality(tableRow.id, newQuality);
+      updateQuality(ideaId, newQuality);
     }
   });
 
   $("#table-body").on('click', '#downvote-button', function(){
     var tableRow = this.closest('tr');
+    var ideaId = $(tableRow).data('id');
     var qualityString =  this.closest('tr').querySelector("#quality").textContent;
     var qualityIndex = qualityLookup.indexOf(qualityString);
     if (qualityIndex !== 0) {
       var newQuality = qualityLookup[qualityIndex - 1];
-      updateQuality(tableRow.id, newQuality);
+      updateQuality(ideaId, newQuality);
     }
   });
 
