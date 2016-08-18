@@ -36,6 +36,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'shoulda-matchers'
+  gem 'teaspoon'
+  gem 'teaspoon-mocha'
 end
 
 group :test do
