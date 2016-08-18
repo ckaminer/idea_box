@@ -8,7 +8,7 @@ RSpec.feature "user views all ideas", js: true do
 
       expect(page).to have_content "Welcome to Idea Box"
       expect(page).to have_css "#table-body"
-      expect(page).to have_selector(".idea", count: 2)
+      expect(page).to have_selector(".idea", count: 3)
     end
   end
 end
