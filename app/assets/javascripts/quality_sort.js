@@ -17,7 +17,6 @@ $( document ).ready(function() {
           return indexLookup(aQuality) - indexLookup(bQuality);
         }
     });
-    // var readyIdeas = toggleDescending(sorted);
     displayInOrder(sorted);
   }
 
