@@ -11,14 +11,16 @@ $( document ).ready(function() {
 
   $("#table-body").on('blur', '.idea-title', function(){
     var tableRow = this.closest('tr');
+    var ideaId = $(tableRow).data('id');
     var updatedTitle = $(this).text();
-    updateIdea(tableRow.id, { title: updatedTitle });
+    updateIdea(ideaId, { title: updatedTitle });
   });
 
   $("#table-body").on('blur', '.idea-body', function(){
     var tableRow = this.closest('tr');
+    var ideaId = $(tableRow).data('id');
     var updatedBody = $(this).text();
-    updateIdea(tableRow.id, { body: updatedBody });
+    updateIdea(ideaId, { body: updatedBody });
   });
 
 });
